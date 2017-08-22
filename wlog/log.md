@@ -1,3 +1,11 @@
+---
+title: wlogs
+date: 2017-08-08 19:41:27
+tags: [个人日常整理]
+---
+
+# WLOGS
+
 # 7-11
 
 ### windows 下 php环境搭建，开发工具部署 心得
@@ -242,14 +250,14 @@ server {
     * 解压缩汇总
       * tar： 
         tar -cf all.tar *.jpg 将所有的.jpg 打包名为all.tar的包。-c产生新的包，-f指定包的文件名。
-	tar -rf all.tar *.gif 这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的 
+    tar -rf all.tar *.gif 这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的 
 意思。
-	tar -xf all.tar 解压
+    tar -xf all.tar 解压
       * gzip： 基本上tar就可以用来压缩和解压了
       * zip： unzip 解压  zip -r yasuo.zip abc.txt dir1 将abc.txt 和dir1一起打包
       
-	
-	  	
+    
+        
 
 
 ### jquery
@@ -369,5 +377,113 @@ done
 #7-24
 
 ### python
-   * # -*- coding: UTF-8 -*-   必须加在py文件第一行，不然中文注释报错，因为py是默认ascll编码的，这行则指定文件为utf-8，文件就可以用中文
+   * ```# -*- coding: UTF-8 -*-```   必须加在py文件第一行，不然中文注释报错，因为py是默认ascll编码的，这行则指定文件为utf-8，文件就可以用中文
    * 在 python 中，for … else 表示这样的意思，for 中的语句和普通的没有区别，**else中的语句会在循环正常执行完**（即 for 不是通过 break 跳出而中断的）的情况下执行，while … else 也是一样。
+
+### hexo
+   * 记得linux下面文件权限问题，将new的文章权限改成当前用户权限，不然就老是报```hexo  Cannot set property 'lastIndex' of undefined```
+
+### linux
+   * 不同权限用户的公钥也不一样，root的id_rsa.pub 的公钥和locqj的id_rsa.pub的公钥是不一样的
+
+
+# 7-25
+
+### linux
+   * 重新读取.zshrc，source .zshrc
+   * source 改变配置文件的时候需要用到 source xxx
+   * tree -l 当前路径下的文件 -d 是目录 -a所有 -c加上色彩 -L level 显示一级目录和文件
+   * vim
+      * 5dd 删除当前行和之后四行， 3x是删除当前字符和之后两个字符 d$删除到行尾，d0删除到行头 dW删除当前字符到下一个单词
+      * yy 复制 具体和上面一样 ，p是粘贴
+      * u撤销， J是合并当前行和下一行， /xxx 搜索 
+      * :n 下一个文件 :N 上一个文件 :buffers 正在编译的文件列表 :e xxx 文件名就载入多一个文件：
+   * scp
+      * 本地上传服务器 ```scp /home/liujia/file.1txt  liujia@172.16.252.32:/user/liujia```
+      * 服务器下载 ```scp liujia@172.16.252.32:/user/liujia/file1.txt /home/liujia```
+      * 参数： -r整个目录， -v 提示文件信息， -p保留源文件的建立时间
+   * python
+      * tup1 = (50,); 一个元组的时候需要加，
+      * Python的from语句让你从模块中导入一个指定的部分到当前命名空间中。语法如下：```from modname import name1[, name2[, ... nameN]]``` 也可以是* 
+      * __init__.py引入包，然后里面的函数名必须要有和from xxx import xxx 名字必须一样 这个引的是.py文件里面的函数，是包的入口文件
+      * raw_input('xxx') 或 input 输入-》类似scanf
+
+
+# 7-26
+
+### python
+   * 错误提醒：
+     - 忘记在 if , elif , else , for , while , class ,def 声明末尾添加 ：（导致 “SyntaxError ：invalid syntax”）
+     - 使用 = 而不是 ==（导致“SyntaxError: invalid syntax”）
+
+
+### shell
+   * 数组定义STORE=('hjs00002' 'hjs00003' 'hjs00004' 'hjs00005') 数据之间不需要有分号
+   * 遍历数组 for store_code in ${STORE[@]} 所有成${STORE[@]}
+   * if判断[]中括号前后必须空格，除了最后else不需要then，if， elif 都要接then才能执行
+  
+### php
+   * 数组去重复值 array_unique
+
+
+# 7-27
+
+### hexo
+   * 报错```Cannot set property 'lastIndex' of undefined``` 是配置文件_config.yml中的highlight配置设置错误，将```auto_detect: false``` 。
+
+### linux
+   * crontab
+       * crontab -e edit crontab -l list 
+       * 服务的控制目录在/etc/init.d/cron {restart|start|stop}
+    
+   * tail -f 监视者模式，循环监视最后的数据，通常用在查看日志主要是-f
+   * 配置vhost，在/etc/nginx/sites-enabled 里面引用，然后在/etc/hosts 文件中指向127.0.0.1 xxx.com 和你的配置文件的域名一样
+
+### php
+   * array_reverse() 数组反转，后进先出
+   * 记住类名首字母大写
+
+### 面向对象基本原则
+   1. 单一原则：一个类，只需要做好一件事情。
+   2. 开放封闭：一个类，应该是可扩展，而不可以修改来增加功能。
+   3. 依赖倒置：一个类，不应该强依赖另一个类。每个类对于另外一个类是可以被替换的。依赖注入。
+   4. 配置化：尽量可能使用配置，而不是硬编码。
+   5. 面向借口的编程：只需要关心接口，不要关心实现
+
+
+# 7-29
+
+### shell
+   * 时间的获取方式
+     - date=$(date +%Y-%m-%d) 当前日期
+     - time=$(date +%H:%M:%S) 当前时间
+
+
+# 8-1
+
+### 阿里云
+   * 80端口默认关闭，安全组添加80/80的端口
+   * phpmyadmin权限不得为777权限过高，也会限制不得访问
+
+
+# 8-8
+
+### linux 
+   * 跳轉到指定行 :n 
+   * 解壓tag.gz的方法 tag -xzvf xxx
+
+# 8-10
+
+### php
+  * 獲取時間戳 time(),
+  * 將當前日期轉化爲時間戳（固定格式） $now = date('Y-m-d', time());
+  * 自定義時間戳 $make_time = mktime(0, 0, 0, 8, 10, 2017);
+  * 時間戳轉化爲時間 strtotime（）
+
+# 8-12
+### git
+  * git强制覆盖本地文件```git fetch --all  git reset --hard origin/master git pull```
+
+# 8-13
+### mysql
+  * 1045 是登錄配置問題，通常爲密碼錯誤
