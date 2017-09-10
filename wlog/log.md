@@ -487,3 +487,31 @@ done
 # 8-13
 ### mysql
   * 1045 是登錄配置問題，通常爲密碼錯誤
+
+
+# 9-1 
+### linux 
+  * 复制带隐藏文件 ```cp -a xxx/. xxx```
+  
+# 9-4
+### html
+  * 响应式标准代码 
+  ```html
+      @media screen and (min-width:1440px){ /*大于等于1440*/
+    /*这里是特定的样式表*/
+    }
+    @media screen and (max-width:1024px){    
+    }
+    @media screen and (max-width:768px){
+    }
+    @media screen and (max-width:375px){
+    }
+    @media screen and (max-width:320px){
+    }
+  ```
+
+# 9-10
+### git 
+* 修改最后一次commit 信息 ``` git commit --amend```
+* 回滚制定版本 ```git log cp制定版本 git reset --hard xxxxxxxx```
+
